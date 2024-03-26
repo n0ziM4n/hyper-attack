@@ -1,0 +1,47 @@
+#!/bin/bash
+
+# Function to check if Bluetooth is enabled
+check_bluetooth_status() {
+    bluetooth_status=$(bluetoothctl show | grep "Powered: yes")
+    if [[ -n "$bluetooth_status" ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+# Function to spam messages
+spam_messages() {
+    while true; do
+        # Implement message spamming logic here
+        echo "Spamming messages..."
+        sleep 5  # Adjust the interval as needed
+    done
+}
+
+# Function to open random links
+open_random_links() {
+    while true; do
+        # Implement opening random links logic here
+        echo "Opening random links..."
+        sleep 10  # Adjust the interval as needed
+    done
+}
+
+# Main function
+main() {
+    # Check if Bluetooth is enabled
+    check_bluetooth_status
+    if [[ $? -eq 0 ]]; then
+        echo "Bluetooth is enabled. Initiating exploits..."
+        # Start exploiting Bluetooth functionalities
+        spam_messages &
+        open_random_links &
+    else
+        echo "Bluetooth is not enabled. Exiting..."
+        exit 1
+    fi
+}
+
+# Execute the main function
+main
